@@ -1,6 +1,6 @@
 # Thank you for opening a pull request to smart-village.dev ❤️
 
-Before you submit your PR, please take a look at the [contributing guidelines](https://github.com/willi84/smart-village/blob/master/CONTRIBUTING.md). :)
+Before you submit your PR, please take a look at the [contributing guidelines](https://github.com/willi84/smart-village.dev/blob/master/CONTRIBUTING.md). :)
 
 To make it easier for us to review and merge your PR, please make sure …
 
