@@ -18,11 +18,18 @@
   <ol class="main-grid">
     {% for item in tag.items | sort(renderData.listIsReversed, false, renderData.listIsSortedBy )%}
       <li class="shadow-full bg-lighter flex-column p-relative">
-        <img
+        {# <img
         src="https://pics.stefanjudis.com/{{item.url | urlencode}}/medium/16:9/"
         alt="Screenshot of {{item.name}}"
         width="1156"
         height="650"
+        loading="lazy"> #}
+        <img
+        srcset="/screenshots/{{ item.slug }}@1.jpg 1x,
+                /screenshots/{{ item.slug }}@2.jpg 2x"
+        src="/screenshots/{{ item.slug }}@2.jpg" alt="Screenshot of {{item.name}}"
+        width="1000"
+        height="600"
         loading="lazy">
         <div class="margin-top-m padding-v-m">
           <h2 class="fsi-1-25 margin-bottom-s">{{ item.name }}</h2>

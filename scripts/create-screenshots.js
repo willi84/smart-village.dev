@@ -1,5 +1,7 @@
 const pLimit = require('p-limit');
-const chrome = require('chrome-aws-lambda');
+// const chrome = require('chrome-aws-lambda');
+const chromium = require('@sparticuz/chromium');
+const puppeteer = require('puppeteer');
 const { statSync, mkdirSync } = require('fs');
 const { join } = require('path');
 const copyDir = require('copy-dir');
@@ -53,11 +55,21 @@ async function screenshotHelper(browser, helper, screenshotDir) {
 
 async function makeScreenshots(helpers, { screenshotCacheDir }) {
   console.log('Taking screenshots...');
-  const browser = await chrome.puppeteer.launch({
-    args: chrome.args,
-    executablePath: await chrome.executablePath,
-    headless: true,
-  });
+  // console.log(chrome.args);
+  // console.log(await chrome.executablePath);
+  // const browser = await chrome.puppeteer.launch({
+  //   args: chrome.args,
+  //   executablePath: await chrome.executablePath,
+  //   headless: true,
+  // });
+  const browser = await puppeteer.launch(
+    {
+        executablePath: await chromium.executablePath(),
+        headless: chromium.headless,
+        ignoreHTTPSErrors: true,
+        defaultViewport: chromium.defaultViewport,
+        args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
+    });
   const limit = pLimit(8);
   const screenshotPromises = helpers.map((helper) =>
     limit(() => screenshotHelper(browser, helper, screenshotCacheDir))
