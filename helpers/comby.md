@@ -6,6 +6,7 @@ tags: [
   "Frauenhofer",
   "Mobilität",
   "Mitfahrbank",
+  "ländlicher Raum"
 ]
 maintainers: [
 ]
